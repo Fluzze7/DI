@@ -17,7 +17,7 @@
 8. [Licencia](#licencia)
 
 ## Descripción del Proyecto
-
+Este es un ejemplo de readme hecho para la asignatura de Desarrollo de Interfaces. Pronto habrá más información...
 
 ## Estado del Proyecto
 
