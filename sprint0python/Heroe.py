@@ -83,4 +83,4 @@ class Heroe:
         """
         Muestra en consola el valor de los distintos atributos del objeto heroe.
         """
-        print("Tu heroe ha aparecido; \nAtaque: ",self.ataque,"\nDefensa: ",self.defensa,"\nSalud: ",self.salud)
+        print("Ataque: ",self.ataque,"\nDefensa: ",self.defensa,"\nSalud: ",self.salud)

@@ -26,7 +26,9 @@ class Mazmorra:
         self.monstruos = [
             Monstruo("Zombie", 10 * randrange(3, 4, 1), 4 * randrange(2, 5, 1), 40),
             Monstruo("Esqueleto", 25, 25, 12 * randrange(2, 6, 1)),
-            Monstruo("Orco", 5 * randrange(8,15,1), 25, 60)
+            Monstruo("Orco", 4 * randrange(8,12,1), 5, 60),
+            Monstruo("Esqueleto", 25, 15, 12 * randrange(2, 3, 1)),
+            Monstruo("Bruja", 5 * randrange(10, 15, 1), 5, 40)
         ]
         # Se asigna un objeto Tesoro, que interactuará con el héroe.
         self.tesoro = Tesoro(heroe)
@@ -45,7 +47,7 @@ class Mazmorra:
                 self.enfrentar_enemigo(enemigo)
             if not self.heroe.esta_vivo():  # Si el héroe muere, el juego termina.
                 break
-            self.tesoro.encontrar_tesoro(self.heroe)  # Si el héroe sobrevive, busca un tesoro.
+            self.tesoro.encontrar_tesoro(randrange(1,4,1))  # Si el héroe sobrevive, busca un tesoro.
         if self.heroe.esta_vivo():
             print("Enhorabuena, has derrotado a todos los monstruos de la mazmorra.")
             print("Tus estadisticas finales son:")
