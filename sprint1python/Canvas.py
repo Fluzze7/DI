@@ -1,6 +1,7 @@
 import tkinter as tk
 
 def dibujar_formas():
+    canvas.delete("all")
     canvas.create_rectangle(float(var1.get()),float(var2.get()),float(var3.get()),float(var4.get()))
     canvas.create_oval(float(var1.get()), float(var2.get()), float(var3.get()), float(var4.get()))
 root = tk.Tk()
@@ -21,8 +22,8 @@ frame_labels.pack(side="top", pady=5)
 
 # Crear las etiquetas y colocarlas en fila usando pack
 label1 = tk.Label(frame_labels, text="x0")
-label2 = tk.Label(frame_labels, text="x1")
-label3 = tk.Label(frame_labels, text="y0")
+label2 = tk.Label(frame_labels, text="y0")
+label3 = tk.Label(frame_labels, text="x1")
 label4 = tk.Label(frame_labels, text="y1")
 
 label1.pack(side="left", padx=60)
