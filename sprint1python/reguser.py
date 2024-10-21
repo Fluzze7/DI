@@ -1,5 +1,6 @@
 # import de clase para interfaces gráficas
 import tkinter as tk
+
 from users import *
 
 
@@ -114,11 +115,15 @@ if __name__ == '__main__':
     # crear y agregar labels y listbox para mostrar usuarios registrados
     list_label = tk.Label(list_frame, text="Usuarios registrados.", font=("Times", 24, "italic"))
     list_label.pack(pady=5)
-    users_listbox = tk.Listbox(list_frame, selectmode=tk.SINGLE, bg="grey")
-    users_listbox.pack(pady=5)
+    listbox_frame = tk.Frame(list_frame)
+    listbox_frame.pack(pady=5)
+    users_listbox = tk.Listbox(listbox_frame, selectmode=tk.SINGLE, bg="grey",width=30)
+    users_listbox.pack(side="left")
     users_listbox.bind("<<ListboxSelect>>", on_select)
-    user_data_label = tk.Label(list_frame, text="")
+    user_data_label = tk.Label(listbox_frame, text="")
     user_data_label.pack(pady=5)
+    vert_scroll = tk.Scrollbar(listbox_frame, orient="vertical", command=users_listbox.yview)
+    vert_scroll.pack(side="right",fill=tk.Y)
 
     # iniciar el programa
     root.mainloop()
