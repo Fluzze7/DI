@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab7dfe7b-c767-4708-977d-2302be6f6df1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../sprint1pythonextra/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sprint1pythonextra/pptia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sprint1pythonextra/tendencies" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sprint1pythonextra/tendencies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sprint1pythonextra/window.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
