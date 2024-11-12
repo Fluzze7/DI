@@ -17,7 +17,7 @@ class View:
         self.note_listbox.pack()
 
         self.notes_label = tk.Label(self.main_frame, text="Insert new notes on the entry below", font=("Arial", 15),
-                                    bg="grey")
+bg="grey")
         self.notes_label.pack(pady=5)
 
         self.notes_entry = tk.Entry(self.main_frame, width=40)
