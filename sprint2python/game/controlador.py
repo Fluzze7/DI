@@ -1,11 +1,7 @@
 from tkinter import messagebox,simpledialog,Toplevel,Label,Tk
 
-from modelo import GameModel
-from vista import GameView,MainMenu
-import time
 
 from tkinter import simpledialog, messagebox, Toplevel
-from recursos import descargar_imagen
 from modelo import GameModel
 from vista import GameView, MainMenu
 
@@ -19,6 +15,7 @@ class GameController:
         self.timer_started = False
         self.main_menu = MainMenu(root, start_game_callback=self.start_game,
                                   show_stats_callback=self.show_stats, quit_callback=self.quit_game)
+        self.loading_window = None
 
     def start_game(self):
         player_name = simpledialog.askstring("Nombre del Jugador", "Ingresa tu nombre")
@@ -26,9 +23,11 @@ class GameController:
         if player_name is None:
             player_name = "User123456"
         difficulty = {"fácil": 4, "medio": 6, "difícil": 8}.get(difficulty, 4)
-
+        self.model = GameModel(difficulty,player_name)
+        print(self.model.images_are_loaded())
+        self.game_view = GameView(on_card_click_callback=self.on_card_click,update_time_callback=self.update_time,update_move_count_callback=self.update_move_count)
+        self.game_view.window = Toplevel(self.root)
         self.show_loading_window("Cargando tablero...")
-        self.model = GameModel(difficulty, player_name)  # Crear modelo con los parámetros
         self.check_images_loaded()  # Verificar si las imágenes se han cargado correctamente
 
     def show_loading_window(self, message):
@@ -40,6 +39,7 @@ class GameController:
     def check_images_loaded(self):
         if self.model.images_are_loaded():
             self.loading_window.destroy()
+            print("Imagenes cargadas")
             self.setup_game_view()
         else:
             self.root.after(100, self.check_images_loaded)  # Espera hasta que las imágenes se carguen
