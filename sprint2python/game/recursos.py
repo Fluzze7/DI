@@ -9,7 +9,8 @@ def descargar_imagen(url,size):
         response = requests.get(url)
         response.raise_for_status()
         image = Image.open(BytesIO(response.content))
-        image = image.resize(size,Image.Resampling.LANCZOS)
+        image = image.resize((size, size), Image.Resampling.LANCZOS)
+
         return ImageTk.PhotoImage(image)
-    except (HTTPError, RequestException):
+    except (HTTPError, RequestException,IOError):
         return None

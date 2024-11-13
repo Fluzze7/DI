@@ -11,7 +11,7 @@ class GameModel:
         self.difficulty = difficulty
         self.player_name = player_name
         self.cell_size = cell_size
-        self.board_size = {"easy":4,"medium":6,"hard":8}.get(difficulty,4)
+        self.board_size = {"fácil":4,"medio":6,"difícil":8}.get(difficulty,4)
         self.board = self._generate_board()
         self.hidden_image = None
         self.images = {}
@@ -37,7 +37,7 @@ class GameModel:
         image_id = [i for i in range(0,self.board_size)]
 
         for images in image_id:
-            self.images[images] = descargar_imagen(base_url+f"{images}.png")
+            self.images[images] = descargar_imagen(base_url+f"{images}.png",self.cell_size)
 
         if len(image_id) == len(self.images):
             self.images_loaded.set()
@@ -68,8 +68,8 @@ class GameModel:
         scores[self.difficulty].append(score_data)
         scores[self.difficulty] = sorted(scores[self.difficulty],key=lambda x: x["moves"])[:3]
 
-        with open("ranking.txt","w")as file:
-            file.write(str(scores))
+        with open("ranking.txt", "w") as file:
+            json.dump(scores, file)
 
     def load_scores(self):
         try:
