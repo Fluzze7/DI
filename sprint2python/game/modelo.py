@@ -11,7 +11,7 @@ class GameModel:
         self.difficulty = difficulty
         self.player_name = player_name
         self.cell_size = cell_size
-        self.board_size = {"fácil":4,"medio":6,"difícil":8}.get(difficulty,4)
+        self.board_size = difficulty
         self.board = self._generate_board()
         self.hidden_image = None
         self.images = {}
@@ -31,7 +31,7 @@ class GameModel:
         return board
 
     def _load_images(self):
-        base_url = "https://github.com/Fluzze7/sprint2python/images"
+        base_url = "https://github.com/Fluzze7/sprint2python/images/"
         self.hidden_image = descargar_imagen(base_url+"hidden.png",self.cell_size)
 
         image_id = [i for i in range(0,self.board_size)]
