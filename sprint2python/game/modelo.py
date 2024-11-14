@@ -3,7 +3,6 @@ import time
 import random
 from datetime import datetime
 import json
-
 from recursos import descargar_imagen
 
 class GameModel:
@@ -11,12 +10,12 @@ class GameModel:
         print("Inicializando GameModel")
         self.difficulty = difficulty
         self.player_name = player_name
-        self.cell_size = cell_size=100
+        self.cell_size = 100
         self.board = None
         self._generate_board()
         self.hidden_image = None
         self.images = {}
-        self.images_loaded = threading.Event()
+        self.images_loaded = False
         self._load_images()
         self.start_time = None
         self.moves = 0
@@ -47,43 +46,23 @@ class GameModel:
 
 
     def images_are_loaded(self):
-        return self.images_loaded.is_set()
+        return True if self.images is not None else False
 
     def start_timer(self):
-        self.start_time = time.time()
+        pass
+
     def check_match(self,pos1,pos2):
-        self.moves += 1
-        if self.board[pos1[0]][pos1[1]]== self.board[pos2[0]][pos2[1]]:
-            self.pairs_found +=1
-            return True
         return False
+    def hold_a_sec(self):
+        time.sleep(1)
     def is_game_complete(self):
-        return self.pairs_found == (self.difficulty **2)//2
+        pass
 
     def save_score(self):
-        score_data ={
-            "name" : self.player_name,
-            "difficulty" : self.difficulty,
-            "moves" : self.moves,
-            "date" : datetime.now().strftime("%Y-%m-%d")
-        }
-
-        scores = self.load_scores()
-
-        scores[self.difficulty].append(score_data)
-        scores[self.difficulty] = sorted(scores[self.difficulty],key=lambda x: x["moves"])[:3]
-
-        with open("ranking.txt", "w") as file:
-            json.dump(scores, file)
+        pass
 
     def load_scores(self):
-        try:
-            with open("ranking.txt", "r") as file:
-                scores = json.load(file)
-        except (FileNotFoundError, json.JSONDecodeError):
-            scores = {"easy": [], "medium": [], "hard": []}
-
-        return scores
+        pass
 
 
 
