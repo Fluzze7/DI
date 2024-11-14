@@ -3,6 +3,8 @@ import time
 import random
 from datetime import datetime
 import json
+from math import trunc
+
 from recursos import descargar_imagen
 
 class GameModel:
@@ -52,9 +54,11 @@ class GameModel:
         pass
 
     def check_match(self,pos1,pos2):
-        return False
-    def hold_a_sec(self):
-        time.sleep(1)
+        return True if self.board[pos1[0]][pos1[1]] == self.board[pos2[0]][pos2[1]] else False
+
+
+
+
     def is_game_complete(self):
         pass
 

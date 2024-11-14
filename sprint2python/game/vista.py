@@ -20,7 +20,7 @@ class GameView:
             j = 0
             for i in row:
                 label = Label(self.window, text="", image=model.hidden_image)
-                label.bind("<Button-1>", lambda event, pos=(j, k): self.on_card_click_callback(pos))
+                label.bind("<Button-1>", lambda event, pos=(j, k): self.on_card_click_callback(pos),self.update_move_count_callback)
                 label.grid(row=k, column=j)
                 self.labels[(j, k)] = label
                 j += 1

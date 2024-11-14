@@ -53,9 +53,12 @@ class GameController:
             if len(self.cards_shown)== 2:
                 self.click_blocked = True
                 if self.model.check_match(self.cards_shown[0],self.cards_shown[1]):
-                    print("Pareja encontrada")
+                    self.model.pairs_found += 1
+
+                    self.cards_shown.clear()
+                    self.click_blocked = False
                 else:
-                    self.game_view.window.after(1000, self.revert_cards)  # 1000 ms = 1 segundo
+                    self.game_view.window.after(500, self.revert_cards)  # 1000 ms = 1 segundo
 
 
     def revert_cards(self):
