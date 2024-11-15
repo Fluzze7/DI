@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Label, messagebox
-
+import pygame as musica
 
 class GameView:
     def __init__(self, on_card_click_callback, update_move_count_callback, update_time_callback):
@@ -39,13 +39,16 @@ class GameView:
 
     def set_time(self, param):
         self.times_label.config(text=f"Tiempo: {param}")
+
     def show_victory(self,moves,time,username):
         messagebox.showinfo(title="Resultado",message=f"Ganaste {username}!! Te llevó {moves} intentos, y tardaste {time} s. Enhorabuena.")
+     #   musica.mixer.music.load()
 
 
 class MainMenu:
     def __init__(self, root, start_game_callback, show_stats_callback, quit_callback):
         self.window = root
+        self.window.resizable(False,False)
         self.window.geometry("300x150")
         self.window.title("Juego de Memoria")
         (tk.Button(self.window, text="Jugar", command=start_game_callback).grid(row= 0, column=0, pady=10))
@@ -53,3 +56,8 @@ class MainMenu:
         (tk.Button(self.window, text="Salir", command=quit_callback).grid(row= 2, column=0, pady=10))
         for i in range(3):
             self.window.grid_columnconfigure(0, weight=1)
+        musica.mixer.init()
+        musica.mixer.music.load("../musica/musica.mp3")
+        musica.mixer.music.set_volume(0.10)
+        musica.mixer.music.play(-1)
+
