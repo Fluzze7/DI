@@ -17,8 +17,7 @@ class GameController:
         self.button_effect.set_volume(0.5)
         self.card_effect = musica.mixer.Sound("../musica/carta.mp3")
         self.card_effect.set_volume(0.5)
-        self.wrong_card = musica.mixer.Sound("../musica/fallo.mp3")
-        self.wrong_card.set_volume(0.15)
+
         self.loading_window = None
         self.cards_shown = []
         self.click_blocked = False
@@ -30,7 +29,7 @@ class GameController:
         player_name = simpledialog.askstring("Nombre del Jugador", "Ingresa tu nombre")
         self.button_effect.play()
         if player_name is None or player_name=="":
-            player_name = "User123456"
+            player_name = "default_user"
 
         difficulty = simpledialog.askstring("Seleccionar Dificultad", "Elige una dificultad: fácil, medio o difícil")
         self.button_effect.play()
@@ -96,7 +95,6 @@ class GameController:
 
     def revert_cards(self):
         # Revertir las cartas que no son una pareja
-        self.wrong_card.play()
         self.game_view.labels[(self.cards_shown[0][0], self.cards_shown[0][1])].config(image=self.model.hidden_image)
         self.game_view.labels[(self.cards_shown[1][0], self.cards_shown[1][1])].config(image=self.model.hidden_image)
         # Limpiar la lista de cartas mostradas
