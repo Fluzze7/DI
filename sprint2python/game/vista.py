@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Label, Toplevel
+from tkinter import Label, messagebox
 
 
 class GameView:
@@ -39,9 +39,8 @@ class GameView:
 
     def set_time(self, param):
         self.times_label.config(text=f"Tiempo: {param}")
-
-    def update_move_count(self,moves):
-      pass
+    def show_victory(self,moves,time,username):
+        messagebox.showinfo(title="Resultado",message=f"Ganaste {username}!! Te llevó {moves} intentos, y tardaste {time} s. Enhorabuena.")
 
 
 class MainMenu:
@@ -49,6 +48,8 @@ class MainMenu:
         self.window = root
         self.window.geometry("300x150")
         self.window.title("Juego de Memoria")
-        (tk.Button(self.window, text="Jugar", command=start_game_callback).grid(row= 0, column=1))
-        (tk.Button(self.window, text="Estadísticas", command=show_stats_callback).grid(row= 1, column=1))
-        (tk.Button(self.window, text="Salir", command=quit_callback).grid(row= 2, column=1))
+        (tk.Button(self.window, text="Jugar", command=start_game_callback).grid(row= 0, column=0, pady=10))
+        (tk.Button(self.window, text="Estadísticas", command=show_stats_callback).grid(row= 1, column=0, pady=10))
+        (tk.Button(self.window, text="Salir", command=quit_callback).grid(row= 2, column=0, pady=10))
+        for i in range(3):
+            self.window.grid_columnconfigure(0, weight=1)
