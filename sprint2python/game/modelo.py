@@ -62,6 +62,7 @@ class GameModel:
     def save_score(self, difficulty, name, moves, seconds):
         file_path = "ranking.json"
         results = self.load_results()
+        print(f"Guardando resultado: {name}, {difficulty}, {moves}, {seconds}")
 
         if difficulty not in results:
             results[difficulty] = []
@@ -72,12 +73,24 @@ class GameModel:
             "tiempo": seconds,
             "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
+
+        # Añadir el nuevo resultado y ordenar la lista por movimientos y tiempo
         results[difficulty].append(new_result)
         results[difficulty].sort(key=lambda x: (x["movimientos"], x["tiempo"]))
+
+        # Mantener solo los tres mejores resultados
         results[difficulty] = results[difficulty][:3]
+        try:
+            with open(file_path, 'w') as f:
+                # Escribir un diccionario vacío para borrar el contenido
+                json.dump({}, f, indent=4)
+            print("Contenido del archivo JSON borrado correctamente.")
+        except Exception as e:
+            print(f"Error al borrar el archivo JSON: {e}")
 
         try:
             with open(file_path, 'w') as f:
+                print("Resultados guardados correctamente")
                 json.dump(results, f, indent=4)
         except Exception as e:
             print(f"Error al guardar los resultados: {e}")
@@ -87,9 +100,13 @@ class GameModel:
         if os.path.exists(file_path):
             try:
                 with open(file_path, 'r') as f:
-                    return json.load(f)
+                    results = json.load(f)
+                    print(f"Resultados cargados: {results}")  # Agregar para depuración
+                    return results
             except json.JSONDecodeError:
                 print("Error al leer el archivo JSON. El archivo puede estar corrupto.")
                 return {4: [], 6: [], 8: []}
         else:
+            print("Archivo ranking.json no encontrado. Se creará uno nuevo.")  # Agregar para depuración
             return {4: [], 6: [], 8: []}
+

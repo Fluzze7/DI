@@ -39,10 +39,11 @@ class GameController:
         self.check_images_loaded()
 
     def update_time(self):
-        self.game_view.set_time(self.model.get_elapsed_time())
+        if self.game_view is not None:
+            self.game_view.set_time(self.model.get_elapsed_time())
 
-        if not self.is_game_won:
-            self.root.after(1000, self.update_time)
+            if not self.is_game_won:
+                self.root.after(1000, self.update_time)
 
     def show_loading_window(self, message):
         self.loading_window = Toplevel(self.root)
@@ -113,12 +114,17 @@ class GameController:
 
     def check_game_complete(self):
         if self.model.pairs_found == (self.model.difficulty ** 2 // 2):
-            self.game_view.show_victory(self.model.moves, self.model.get_elapsed_time(),self.model.player_name)  # Llamada correcta al método
+            self.game_view.show_victory(self.model.moves, self.model.get_elapsed_time(),self.model.player_name)
+            self.end_game()# Llamada correcta al método
             return True
         return False
+
     def end_game(self):
-        self.model.save_score(self.model.difficulty,self.model.player_name,self.model.moves,self.model.get_elapsed_time())
+        print("Finalizando juego...")  # Agregar para depuración
+        self.model.save_score(self.model.difficulty, self.model.player_name, self.model.moves,
+                              self.model.get_elapsed_time())
         self.return_to_main_menu()
+
     def return_to_main_menu(self):
         self.game_view.window.destroy()  # Destruir la vista del juego
         self.game_view = None
