@@ -37,6 +37,8 @@ class GameModel:
 
         self.hidden_image = descargar_imagen(base_url + "hidden.png", self.cell_size)
         image_ids = [i for i in range(0, (self.difficulty**2)//2)]
+        image_ids = [i for i in range(0, (8**2)//2)]
+        print(image_ids)
         for image_id in image_ids:
             image_url = f"{base_url}{image_id}.png"
             self.images[image_id] = descargar_imagen(image_url, self.cell_size)
