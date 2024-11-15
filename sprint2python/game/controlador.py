@@ -29,7 +29,7 @@ class GameController:
         self.button_effect.play()
         player_name = simpledialog.askstring("Nombre del Jugador", "Ingresa tu nombre")
         self.button_effect.play()
-        if player_name is None:
+        if player_name is None or player_name=="":
             player_name = "User123456"
 
         difficulty = simpledialog.askstring("Seleccionar Dificultad", "Elige una dificultad: fácil, medio o difícil")

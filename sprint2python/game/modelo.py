@@ -34,7 +34,7 @@ class GameModel:
 
     def _load_images(self):
         base_url = "https://raw.githubusercontent.com/Fluzze7/DI/main/sprint2python/images/"
-        
+
         self.hidden_image = descargar_imagen(base_url + "hidden.png", self.cell_size)
         image_ids = [i for i in range(0, (self.difficulty**2)//2)]
         for image_id in image_ids:
