@@ -1,6 +1,12 @@
 {
     "4": [
         {
+            "nombre": "default_user",
+            "movimientos": 16,
+            "tiempo": 35,
+            "fecha": "2024-11-18 09:29:49"
+        },
+        {
             "nombre": "User123456",
             "movimientos": 22,
             "tiempo": 26,

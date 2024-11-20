@@ -38,7 +38,6 @@ class GameController:
 
         self.timer_started = False
         self.model.start_time = None
-
         # Mostrar la ventana de carga antes de cargar las imágenes
         self.game_view = GameView(on_card_click_callback=self.on_card_click,
                                   update_time_callback=self.update_time,
