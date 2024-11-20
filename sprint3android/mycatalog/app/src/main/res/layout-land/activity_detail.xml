@@ -9,20 +9,25 @@
     tools:context=".DetailActivity">
 
     <!-- Título -->
-    <TextView
-        android:id="@+id/title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Título"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Imagen -->
+
+    <!-- Descripción -->
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="Título"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/detail_image_view"
         android:layout_width="200dp"
@@ -31,35 +36,32 @@
         android:scaleType="centerCrop"
         android:src="@drawable/sample_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_text_view"
         app:shapeAppearanceOverlay="@style/CircularImageView" />
 
+    <!-- Botón de "Me gusta" -->
 
-    <!-- Descripción -->
     <TextView
         android:id="@+id/description_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:justificationMode="inter_word"
         android:text="Lorem ipsum dolor sit amet consectetur, adipiscing elit mi gravida. Proin rhoncus egestas tellus augue himenaeos turpis gravida ultricies fames pellentesque netus senectus luctus justo."
-        android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/detail_image_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detail_image_view"
+        app:layout_constraintTop_toTopOf="@+id/detail_image_view" />
 
-    <!-- Botón de "Me gusta" -->
     <Button
         android:id="@+id/like_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="20dp"
         android:text="Me gusta"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="@+id/description_text_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
