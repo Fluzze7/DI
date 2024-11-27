@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/yone"
+        android:icon="@drawable/sample_image"
+        android:title="Yone"/>
+    <item
+        android:id="@+id/ekko"
+        android:icon="@drawable/sample_image2"
+        android:title="Ekko"/>
+</menu>
